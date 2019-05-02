@@ -6,4 +6,4 @@ print (Window.name)
 local appWindow = Window()
 print (appWindow.width, appWindow.height)
 
-require("notsogood-scenemanager")
+require("code.state.notsogood-scenemanager")

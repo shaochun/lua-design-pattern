@@ -15,13 +15,30 @@ function SceneManager:ChangeScene(stateName)
 		end
 	}
 
-	-- local switch_result = switch[self._m_state]
-	local switch_result = switch[stateName]
-
+	local switch_result = switch[self._m_state]
+	-- local switch_result = switch[stateName]
 	if (switch_result) then switch_result() else print "Case default (not found)." end
 end
 
+function SceneManager:Update()
+	local switch = {
+		["開始"] = function()	
+			print "Case 開始."
+		end,
+		["選單"] = function()	
+			print "Case 選單."
+		end,
+		["主場景"] = function()
+			print "Case 主場景."
+		end
+	}
+	local switch_result = switch[self._m_state]
+	if (switch_result) then switch_result() else print "Case default (not found)." end
+end
 
+----------------------------------------------------------
+-- test
+----------------------------------------------------------
 local sceneManager = SceneManager()
 --print (appWindow.width, appWindow.height)
 sceneManager:ChangeScene(2) --"case 2"
