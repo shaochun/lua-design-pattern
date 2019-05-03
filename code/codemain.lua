@@ -7,3 +7,5 @@ local appWindow = Window()
 print (appWindow.width, appWindow.height)
 
 require("code.state.notsogood-scenemanager")
+
+require("code.state.state-test")
