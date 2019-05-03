@@ -4,8 +4,8 @@ nsState = {}
 local class = require "class-clean"
 
 
-----------------------------------------------------------------------
-local Context = class("Context", {mpp_state = nil})
+---------------------------------------------------------------------- Context
+Context = class("Context", {mpp_state = nil})
 print (Context.name .. " class ready.")
 
 function Context:Request(value)
@@ -13,16 +13,16 @@ function Context:Request(value)
 end
 
 function Context:SetState(state)
-	print( "Context.SetState:" .. state)
+	print( "Context.SetState:" .. state.name)
 	mpp_state = state
 end
 
 ---------------------------------------------------------------------- State, base class
-local State = class("State", {mp_Context = nil})
+State = class("State", {mp_Context = nil})
 print (State.name .. " class ready.")
 
 function State:init(context)
-	mp_state:Handle(context)
+	mp_Context = context
 end
 
 function State:Handle(value)
@@ -30,11 +30,11 @@ function State:Handle(value)
 end
 
 ---------------------------------------------------------------------- A
-local ConcreteStateA = State:extend("ConcreteStateA", {mpp_state = nil})
+ConcreteStateA = State:extend("ConcreteStateA")
 print (ConcreteStateA.name .. " class ready.")
 
 function ConcreteStateA:init(context)
-	ConcreteStateA.super.init(context)
+	ConcreteStateA.super.init(self, context)
 end
 
 function ConcreteStateA:Handle(value)
@@ -45,11 +45,11 @@ function ConcreteStateA:Handle(value)
 end
 
 ---------------------------------------------------------------------- B
-local ConcreteStateB = State:extend("ConcreteStateB", {mpp_state = nil})
+ConcreteStateB = State:extend("ConcreteStateB")
 print (ConcreteStateB.name .. " class ready.")
 
 function ConcreteStateB:init(context)
-	ConcreteStateB.super.init(context)
+	ConcreteStateB.super.init(self, context)
 end
 
 function ConcreteStateB:Handle(value)
@@ -60,11 +60,11 @@ function ConcreteStateB:Handle(value)
 end
 
 ---------------------------------------------------------------------- C
-local ConcreteStateC = State:extend("ConcreteStateC", {mpp_state = nil})
+ConcreteStateC = State:extend("ConcreteStateC")
 print (ConcreteStateC.name .. " class ready.")
 
 function ConcreteStateC:init(context)
-	ConcreteStateC.super.init(context)
+	ConcreteStateC.super.init(self, context)
 end
 
 function ConcreteStateC:Handle(value)
