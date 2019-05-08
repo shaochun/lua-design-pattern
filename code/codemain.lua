@@ -8,4 +8,14 @@ print (appWindow.width, appWindow.height)
 
 require("code.state.notsogood-scenemanager")
 
+print(" ")
+print("-----------------------------------------------------------")
+print("-- State")
+print("-----------------------------------------------------------")
 require("code.state.state-test")
+
+print(" ")
+print("-----------------------------------------------------------")
+print("-- Mediator")
+print("-----------------------------------------------------------")
+require("code.mediator.mediator-test")

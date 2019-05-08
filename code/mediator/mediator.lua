@@ -63,11 +63,11 @@ end
 function ConcreteMediator:SendMessage(colleague, message) --(Colleague, string) param
 	-- inform Colleague2 when receive Colleague1
 	if( mpp_Colleague1 == colleague) then 
-		mpp_Colleague2.Request( Message)
+		mpp_Colleague2:Request(message)
 	end
 
 	-- inform Colleague1 when receive Colleague2
 	if( mpp_Colleague2 == colleague) then 
-		mpp_Colleague1.Request( Message)
+		mpp_Colleague1:Request(message)
 	end
 end
